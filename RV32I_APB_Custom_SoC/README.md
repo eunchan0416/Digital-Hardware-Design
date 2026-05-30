@@ -14,7 +14,7 @@ The hardware architecture is divided into the execution core, the bus interface,
 * Bus: AMBA 3 APB protocol (1 Master, Multiple Slaves).
 * Peripherals: UART (Configurable baud rate), GPIO, 7-Segment Controller, BRAM.
 
-![System Block Diagram](./docs/block_diagram.png)
+![System Block Diagram](./docs/soc_block_diagram.png)
 
 ## 4. System Memory Map
 The address decoder allocates the following address spaces. The hardware decodes `addr[31:28]` for the main memory region and `addr[15:12]` for specific APB slaves.

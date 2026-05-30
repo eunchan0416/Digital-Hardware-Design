@@ -5,7 +5,7 @@ This directory contains the architectural specifications, state machine descript
 
 ## 1. System Architecture
 The top-level architecture integrates the RV32I multi-cycle core with an AMBA 3 APB bus interface. The memory map and peripheral interconnects are defined based on a 32-bit address space.
-* ![System Block Diagram](./block_diagram.png)
+* ![System Block Diagram](./soc_block_diagram.png)
 
 ## 2. Core Finite State Machine (FSM)
 The RV32I CPU operates on a 5-stage multi-cycle FSM (Fetch, Decode, Execute, Memory, Write-back). Instruction latch logic is implemented at the Fetch stage to optimize the critical path and ensure timing stability.

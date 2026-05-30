@@ -1,0 +1,17 @@
+# Vivado / Vitis / VCS Ignore List
+*.jou
+*.log
+*.pb
+*.wdb
+*.dir/
+.Xil/
+*.runs/
+*.sim/
+*.cache/
+*.hw/
+*.ip_user_files/
+# Vitis specific
+.metadata/
+RemoteSystemsTempFiles/
+*.elf
+*.bit

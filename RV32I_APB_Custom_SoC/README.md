@@ -1,23 +1,23 @@
 # RV32I Multi-cycle Core with AMBA 3 APB Bus SoC
 
 ## 1. Overview
-This repository provides the RTL design and verification environment for a custom 32-bit RISC-V (RV32I base integer instruction set) multi-cycle processor. The core is integrated with an AMBA 3 APB bus to communicate with memory-mapped peripherals, demonstrating a complete System-on-Chip (SoC) architecture.
+This repository provides the RTL design and baseline verification environment for a custom 32-bit RISC-V (RV32I base integer instruction set) multi-cycle processor. The core is integrated with an AMBA 3 APB bus to communicate with memory-mapped peripherals, demonstrating a complete System-on-Chip (SoC) architecture.
 
-## 2. System Architecture
+## 2. Directory Structure
+* `rtl/` : Synthesizable SystemVerilog/Verilog source codes (Core, Bus, Peripherals).
+* `sw/` : Compiled firmware binaries (`.mem`) for HW/SW co-simulation.
+* `docs/` : System architecture diagrams, FSM charts, and verification waveforms.
+
+## 3. System Architecture
 The hardware architecture is divided into the execution core, the bus interface, and the peripheral IPs.
-* Core: 5-stage multi-cycle execution unit (Fetch, Decode, Execute, Memory, Write-back). Instruction latching is implemented at the Fetch stage to optimize the critical path and ensure timing stability.
+* Core: 5-stage multi-cycle execution unit. Instruction latching is implemented at the Fetch stage to optimize the critical path.
 * Bus: AMBA 3 APB protocol (1 Master, Multiple Slaves).
-* Peripherals: UART (Configurable baud rate with shadow registers), GPIO, 7-Segment Display Controller, BRAM.
+* Peripherals: UART (Configurable baud rate), GPIO, 7-Segment Controller, BRAM.
 
-### 2.1. Top-Level Block Diagram
 ![System Block Diagram](./docs/block_diagram.png)
 
-### 2.2. CPU Core FSM Logic
-The processor internal controller governs execution using the following state transition sequence to optimize the critical timing path.
-![CPU FSM Chart](./docs/cpu_fsm_chart.png)
-
-## 3. System Memory Map
-The address decoder within the APB master allocates the following address spaces for each slave IP. The hardware decodes `addr[31:28]` for the main memory region and `addr[15:12]` for specific APB slaves. All transactions are 32-bit aligned.
+## 4. System Memory Map
+The address decoder allocates the following address spaces. The hardware decodes `addr[31:28]` for the main memory region and `addr[15:12]` for specific APB slaves.
 
 | Peripheral | Base Address | Size | Access | Description |
 | :--- | :--- | :--- | :--- | :--- |
@@ -26,22 +26,11 @@ The address decoder within the APB master allocates the following address spaces
 | APB_GPI | 0x2000_1000 | 16B | R | General Purpose Input Read |
 | APB_GPIO | 0x2000_2000 | 16B | R/W | Bidirectional I/O Control |
 | APB_FND | 0x2000_3000 | 16B | W | 7-Segment Display Data Register |
-| APB_UART | 0x2000_4000 | 16B | R/W | UART TX/RX Data & Status/Control |
+| APB_UART | 0x2000_4000 | 32B | R/W | UART TX/RX Data & Status/Control |
 
-## 4. Verification (HW/SW Co-simulation)
-Standard unit-level testbenches are replaced with a system-level hardware/software co-simulation methodology.
-* Compiled C/Assembly firmware binaries (`.mem`) are loaded into the instruction memory.
-* The RV32I core fetches instructions, executes them, and performs bus transactions to peripheral addresses.
-* Protocol compliance and functional correctness are verified via Vivado Simulator.
-
-### 4.1. AMBA APB UART Interface Transaction
-![UART Simulation Waveform](./docs/uart_sim_waveform.png)
-
-### 4.2. Memory-Mapped GPIO Operation
-![GPIO LED Simulation](./docs/gpio_led_sim.png)
-
-## 5. FPGA Implementation
+## 5. FPGA Implementation (Baseline)
 Target Device: Xilinx Artix-7 (xc7a35tcpg236-1) on Digilent Basys3.
+*Note: The following metrics represent a baseline synthesis result without aggressive area/timing constraints.*
 
 | Resource | Utilization | Available | Utilization % |
 | :--- | :--- | :--- | :--- |
@@ -49,6 +38,5 @@ Target Device: Xilinx Artix-7 (xc7a35tcpg236-1) on Digilent Basys3.
 | FF | [Fill_Here] | 41,600 | - % |
 | BRAM | [Fill_Here] | 50 | - % |
 
-## 6. Reference
-For detailed FSM design and operational analysis, refer to the project datasheet:
-* [RV32I_APB_Custom_SoC_Presentation.pptx](./docs/RISC-V_multi-cycle_APB_bus_(2).pptx)
+## 6. Verification & Documentation
+Detailed verification results (HW/SW Co-simulation waveforms) and FSM architectures can be found in the [docs directory](./docs/).

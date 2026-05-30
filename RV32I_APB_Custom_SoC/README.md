@@ -26,7 +26,7 @@ The address decoder allocates the following address spaces. The hardware decodes
 | APB_GPI | 0x2000_1000 | 16B | R | General Purpose Input Read |
 | APB_GPIO | 0x2000_2000 | 16B | R/W | Bidirectional I/O Control |
 | APB_FND | 0x2000_3000 | 16B | W | 7-Segment Display Data Register |
-| APB_UART | 0x2000_4000 | 32B | R/W | UART TX/RX Data & Status/Control |
+| APB_UART | 0x2000_4000 | 16B | R/W | UART TX/RX Data & Status/Control |
 
 ## 5. FPGA Implementation (Baseline)
 Target Device: Xilinx Artix-7 (xc7a35tcpg236-1) on Digilent Basys3.

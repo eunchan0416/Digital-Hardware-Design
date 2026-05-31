@@ -1,38 +1,31 @@
-
 # Hardware Design (RTL)
 
 This directory contains the synthesizable SystemVerilog/Verilog source codes, physical constraints, and the system-level testbench for the RV32I APB Custom SoC.
 
 ## 1. Directory Structure
 
-The design files are strictly categorized by their intellectual property (IP) domain to ensure modularity and reusability.
+The design files are directly categorized by their intellectual property (IP) domain to ensure modularity and reusability.
 
-* `src/` : RTL source files.
-  * `top/` : Top-level SoC wrapper (`rv32i_mcu.sv`).
-  * `core_ip/` : RV32I 5-stage multi-cycle datapath components (ALU, PC, Register File) and Control Unit.
-  * `bus_ip/` : AMBA 3 APB interconnect, multiplexer, and address decoder.
-  * `peripheral_ip/` : Memory-mapped slave IPs including UART, GPIO, FND, and BRAM.
-* `tb/` : System-level testbench (`tb_soc.sv`) designed for HW/SW co-simulation.
-* `constraints/` : Physical pin mapping and clock constraints (`Basys3.xdc`) for Xilinx Artix-7 FPGA targeting.
+* `core/` : RV32I 5-stage multi-cycle datapath components, Control Unit, and the Top-level SoC wrapper (`rv32i_mcu.sv`).
+* `bus_ip/` : AMBA 3 APB interconnect (Master) and Memory-mapped slave peripherals (`APB_UART.sv`, `APB_GPIO.sv`, `APB_FND.sv`, etc.).
+* `memory/` : Data/Instruction memory modules and APB BRAM wrapper (`APB_SLAVE_RAM.sv`).
+* `tb/` : System-level testbench (`tb_rv32i.sv`) designed for HW/SW co-simulation.
+* `Basys-3-Master.xdc` : Physical pin mapping and clock constraints for Xilinx Artix-7 (Digilent Basys 3).
 
 ## 2. Module Hierarchy (Top-Down)
 
-The SoC is constructed using a top-down design methodology. The `rv32i_mcu` module integrates the CPU core, bus interconnect, and peripherals.
+The SoC is constructed using a top-down design methodology. The `rv32i_mcu` module integrates the CPU core, bus interconnect, and memory-mapped peripherals.
 
 ```text
-rv32i_mcu (Top)
- ├── rv32i_core (Master)
- │    ├── Control_unit
- │    ├── ALU & ALU_control
- │    ├── Register_file
- │    └── Datapath Components (PC, MUX, Imm_Gen)
+rv32i_mcu.sv (Top)
+ ├── rv32i_cpu.sv (Core)
+ │    ├── control_unit.sv
+ │    └── rv32i_datapath.sv (PC, ALU, Register File, imm_extender.sv)
  │
- ├── APB_Bus_Interconnect
- │    ├── addr_decoder
- │    └── APB_MUX
+ ├── APB_MASTER.sv (Bus Interconnect & Address Decoder)
  │
- └── Peripherals (Slaves)
-      ├── APB_BRAM (Instruction & Data Memory)
-      ├── APB_GPIO
-      ├── APB_FND
-      └── APB_UART (w/ Baud Rate Generator)
+ └── Peripherals & Memory (APB Slaves)
+      ├── APB_SLAVE_RAM.sv (in memory/)
+      ├── APB_GPIO.sv      (in bus_ip/)
+      ├── APB_FND.sv       (in bus_ip/)
+      └── APB_UART.sv      (in bus_ip/)

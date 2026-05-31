@@ -15,6 +15,6 @@
 * **Description:** Universal Verification Methodology(UVM)을 적용하여 시리얼 통신 IP의 Testbench Architecture(Agent, Scoreboard, Sequence)를 구축하고 커버리지(Coverage)를 100% 달성하기 위한 검증 프로젝트입니다.
 
 ## 🛠️ Tech Stack & EDA Tools
-* **Design & Verification:** Verilog, SystemVerilog, UVM, C (Bare-metal)
+* **Design & Verification:** Verilog, SystemVerilog, UVM, C 
 * **EDA Tools:** Xilinx Vivado, Synopsys VCS / Verdi
 * **Target Board:** Digilent Basys 3 (Xilinx Artix-7)

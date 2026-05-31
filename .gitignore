@@ -1,17 +1,11 @@
-# Vivado / Vitis / VCS Ignore List
-*.jou
+# Vivado / EDA Tools
 *.log
+*.jou
 *.pb
 *.wdb
-*.dir/
+*.vcd
 .Xil/
-*.runs/
-*.sim/
-*.cache/
-*.hw/
-*.ip_user_files/
-# Vitis specific
-.metadata/
-RemoteSystemsTempFiles/
-*.elf
-*.bit
+
+# OS generated files
+.DS_Store
+Thumbs.db

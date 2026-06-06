@@ -27,11 +27,14 @@ The APB master address decoder allocates 4KB address spaces for each memory-mapp
 | APB_FND | 0x2000_3000 | 4KB | W | 7-Segment Display Controller |
 | APB_UART | 0x2000_4000 | 4KB | R/W | UART TX/RX Data & Status/Control |
 
-## 5. FPGA Implementation (Baseline)
+## 5. FPGA Synthesis & Implementation
 * **Target Device:** Xilinx Artix-7 (xc7a35tcpg236-1) / Digilent Basys3
+* **Timing Performance:** Timing Met (**WNS:** 0.227 ns, **TNS:** 0 ns)
+* **Power Consumption:** 0.097 W (Total On-Chip Power)
 
 | Resource | Utilization | Available | Utilization % |
 | :--- | :--- | :--- | :--- |
-| LUT | [Fill_Here] | 20,800 | - % |
-| FF | [Fill_Here] | 41,600 | - % |
-| BRAM | [Fill_Here] | 50 | - % |
+| LUT      | 1,856       | 20,800    | 8.92 %        |
+| LUTRAM   | 560         | 9,600     | 5.83 %        |
+| FF       | 486         | 41,600    | 1.17 %        |
+| IO       | 48          | 106       | 45.28 %       |

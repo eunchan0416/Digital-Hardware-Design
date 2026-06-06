@@ -10,9 +10,9 @@ Detailed architectural specifications and verification results can be found in t
 * **Keywords:** `SystemVerilog`, `RISC-V`, `AMBA 3 APB`, `HW/SW Co-simulation`
 * **Description:** Custom SoC design based on a 32-bit RISC-V (RV32I) multi-cycle core and AMBA 3 APB bus interconnect. Includes integration of memory-mapped peripherals (UART, GPIO, etc.) and hardware behavior verification in a bare-metal C firmware environment.
 
-### 2. [02_Serial_IPs_with_UVM](./02_Serial_IPs_with_UVM) *(In Progress)*
-* **Keywords:** `SystemVerilog`, `UVM`, `Verification`, `VCS/Verdi`
-* **Description:** Implementation of a Universal Verification Methodology (UVM) based testbench architecture (Agent, Scoreboard, Sequence) and coverage closure project for serial communication IP verification.
+### 2. [02_Serial_IPs_with_UVM](./02_Serial_IPs_with_UVM) 
+* **Keywords:** `SystemVerilog`, `UVM`, `UART`, `SPI`, `I2C`, `VCS/Verdi`
+* **Description:** RTL design and UVM (Universal Verification Methodology) based verification of standard serial communication protocols (UART, SPI, I2C). Includes implementation of modular testbench architectures (Agent, Scoreboard, Sequence) aiming for 100% functional coverage.
 
 ## Tech Stack
 * **Languages/Methodology:** Verilog, SystemVerilog, UVM, C (Bare-metal)

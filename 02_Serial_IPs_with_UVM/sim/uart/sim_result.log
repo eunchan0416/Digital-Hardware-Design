@@ -1,0 +1,235 @@
+Info: [VCS_SAVE_RESTORE_INFO] ASLR (Address Space Layout Randomization) is detected on the machine. To enable $save functionality, ASLR will be switched off and simv re-executed.
+Please use '-no_save' simv switch to avoid re-execution or '-suppress=ASLR_DETECTED_INFO' to suppress this message.
+Chronologic VCS simulator copyright 1991-2024
+Contains Synopsys proprietary information.
+Compiler version W-2024.09-SP1_Full64; Runtime version W-2024.09-SP1_Full64;  Jun  6 18:25 2026
+UVM_INFO /tools/synopsys/vcs/W-2024.09-SP1/etc/uvm-1.2/base/uvm_root.svh(402) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2.Synopsys
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+
+ VCS Coverage Metrics Release W-2024.09-SP1_Full64 Copyright (c) 1991-2024 by Synopsys Inc.
+UVM_INFO ./tb/tb_uart.sv(50) @ 0: reporter [tb_uart] === Starting the UART UVM Test ===
+UVM_INFO @ 0: reporter [RNTST] Running test uart_base_test...
+UVM_INFO ./tb/uart_test.sv(22) @ 0: uvm_test_top [uart_base_test] ======= UVM Structure Architecture =======
+UVM_INFO /tools/synopsys/vcs/W-2024.09-SP1/etc/uvm-1.2/base/uvm_root.svh(589) @ 0: reporter [UVMTOP] UVM testbench topology:
+---------------------------------------------------------------
+Name                       Type                     Size  Value
+---------------------------------------------------------------
+uvm_test_top               uart_base_test           -     @344 
+  env                      uart_env                 -     @357 
+    agt                    uart_agent               -     @366 
+      drv                  uart_driver              -     @385 
+        rsp_port           uvm_analysis_port        -     @404 
+        seq_item_port      uvm_seq_item_pull_port   -     @394 
+      mon                  uart_monitor             -     @414 
+        ap_rx_act          uvm_analysis_port        -     @572 
+        ap_rx_exp          uvm_analysis_port        -     @562 
+        ap_tx_act          uvm_analysis_port        -     @592 
+        ap_tx_exp          uvm_analysis_port        -     @582 
+      sqr                  uvm_sequencer            -     @423 
+        rsp_export         uvm_analysis_export      -     @432 
+        seq_item_export    uvm_seq_item_pull_imp    -     @550 
+        arbitration_queue  array                    0     -    
+        lock_queue         array                    0     -    
+        num_last_reqs      integral                 32    'd1  
+        num_last_rsps      integral                 32    'd1  
+    sb                     uart_scoreboard          -     @375 
+      imp_rx_act           uvm_analysis_imp_rx_act  -     @617 
+      imp_rx_exp           uvm_analysis_imp_rx_exp  -     @607 
+      imp_tx_act           uvm_analysis_imp_tx_act  -     @637 
+      imp_tx_exp           uvm_analysis_imp_tx_exp  -     @627 
+---------------------------------------------------------------
+
+UVM_INFO ./tb/uart_driver.sv(72) @ 0: uvm_test_top.env.agt.drv [uart_driver] uart reset end 
+UVM_INFO ./tb/uart_sequence.sv(60) @ 0: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] Starting RX test with 10 iterations
+UVM_INFO ./tb/uart_driver.sv(32) @ 0: uvm_test_top.env.agt.drv [uart_driver] drive_tx [START]: Sending data = 0x70
+UVM_INFO ./tb/uart_monitor.sv(48) @ 989535000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_exp: Captured expected RX data = 0x70
+UVM_INFO ./tb/uart_scoreboard.sv(52) @ 996065000: uvm_test_top.env.sb [SB_RX] PASS! exp: 0x70, act: 0x70
+UVM_INFO ./tb/uart_monitor.sv(61) @ 996065000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_act: Captured actual RX data = 0x70
+UVM_INFO ./tb/uart_driver.sv(47) @ 1041605000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [END]: Finished sending data = 0x70
+UVM_INFO ./tb/uart_sequence.sv(27) @ 1041605000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_rx_test finish : payload = 0x70
+UVM_INFO ./tb/uart_driver.sv(32) @ 1041605000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [START]: Sending data = 0xef
+UVM_INFO ./tb/uart_monitor.sv(48) @ 2031145000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_exp: Captured expected RX data = 0xef
+UVM_INFO ./tb/uart_scoreboard.sv(52) @ 2031155000: uvm_test_top.env.sb [SB_RX] PASS! exp: 0xef, act: 0xef
+UVM_INFO ./tb/uart_monitor.sv(61) @ 2031155000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_act: Captured actual RX data = 0xef
+UVM_INFO ./tb/uart_driver.sv(47) @ 2083215000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [END]: Finished sending data = 0xef
+UVM_INFO ./tb/uart_sequence.sv(27) @ 2083215000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_rx_test finish : payload = 0xef
+UVM_INFO ./tb/uart_driver.sv(32) @ 2083215000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [START]: Sending data = 0x1d
+UVM_INFO ./tb/uart_monitor.sv(48) @ 3072755000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_exp: Captured expected RX data = 0x1d
+UVM_INFO ./tb/uart_scoreboard.sv(52) @ 3079265000: uvm_test_top.env.sb [SB_RX] PASS! exp: 0x1d, act: 0x1d
+UVM_INFO ./tb/uart_monitor.sv(61) @ 3079265000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_act: Captured actual RX data = 0x1d
+UVM_INFO ./tb/uart_driver.sv(47) @ 3124825000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [END]: Finished sending data = 0x1d
+UVM_INFO ./tb/uart_sequence.sv(27) @ 3124825000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_rx_test finish : payload = 0x1d
+UVM_INFO ./tb/uart_driver.sv(32) @ 3124825000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [START]: Sending data = 0x87
+UVM_INFO ./tb/uart_monitor.sv(48) @ 4114365000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_exp: Captured expected RX data = 0x87
+UVM_INFO ./tb/uart_scoreboard.sv(52) @ 4120865000: uvm_test_top.env.sb [SB_RX] PASS! exp: 0x87, act: 0x87
+UVM_INFO ./tb/uart_monitor.sv(61) @ 4120865000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_act: Captured actual RX data = 0x87
+UVM_INFO ./tb/uart_driver.sv(47) @ 4166435000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [END]: Finished sending data = 0x87
+UVM_INFO ./tb/uart_sequence.sv(27) @ 4166435000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_rx_test finish : payload = 0x87
+UVM_INFO ./tb/uart_driver.sv(32) @ 4166435000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [START]: Sending data = 0x2c
+UVM_INFO ./tb/uart_monitor.sv(48) @ 5155975000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_exp: Captured expected RX data = 0x2c
+UVM_INFO ./tb/uart_scoreboard.sv(52) @ 5162465000: uvm_test_top.env.sb [SB_RX] PASS! exp: 0x2c, act: 0x2c
+UVM_INFO ./tb/uart_monitor.sv(61) @ 5162465000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_act: Captured actual RX data = 0x2c
+UVM_INFO ./tb/uart_driver.sv(47) @ 5208045000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [END]: Finished sending data = 0x2c
+UVM_INFO ./tb/uart_sequence.sv(27) @ 5208045000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_rx_test finish : payload = 0x2c
+UVM_INFO ./tb/uart_driver.sv(32) @ 5208045000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [START]: Sending data = 0x18
+UVM_INFO ./tb/uart_monitor.sv(48) @ 6197585000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_exp: Captured expected RX data = 0x18
+UVM_INFO ./tb/uart_scoreboard.sv(52) @ 6204065000: uvm_test_top.env.sb [SB_RX] PASS! exp: 0x18, act: 0x18
+UVM_INFO ./tb/uart_monitor.sv(61) @ 6204065000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_act: Captured actual RX data = 0x18
+UVM_INFO ./tb/uart_driver.sv(47) @ 6249655000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [END]: Finished sending data = 0x18
+UVM_INFO ./tb/uart_sequence.sv(27) @ 6249655000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_rx_test finish : payload = 0x18
+UVM_INFO ./tb/uart_driver.sv(32) @ 6249655000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [START]: Sending data = 0xb6
+UVM_INFO ./tb/uart_monitor.sv(48) @ 7239195000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_exp: Captured expected RX data = 0xb6
+UVM_INFO ./tb/uart_scoreboard.sv(52) @ 7245665000: uvm_test_top.env.sb [SB_RX] PASS! exp: 0xb6, act: 0xb6
+UVM_INFO ./tb/uart_monitor.sv(61) @ 7245665000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_act: Captured actual RX data = 0xb6
+UVM_INFO ./tb/uart_driver.sv(47) @ 7291265000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [END]: Finished sending data = 0xb6
+UVM_INFO ./tb/uart_sequence.sv(27) @ 7291265000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_rx_test finish : payload = 0xb6
+UVM_INFO ./tb/uart_driver.sv(32) @ 7291265000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [START]: Sending data = 0x12
+UVM_INFO ./tb/uart_monitor.sv(48) @ 8280805000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_exp: Captured expected RX data = 0x12
+UVM_INFO ./tb/uart_scoreboard.sv(52) @ 8287265000: uvm_test_top.env.sb [SB_RX] PASS! exp: 0x12, act: 0x12
+UVM_INFO ./tb/uart_monitor.sv(61) @ 8287265000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_act: Captured actual RX data = 0x12
+UVM_INFO ./tb/uart_driver.sv(47) @ 8332875000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [END]: Finished sending data = 0x12
+UVM_INFO ./tb/uart_sequence.sv(27) @ 8332875000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_rx_test finish : payload = 0x12
+UVM_INFO ./tb/uart_driver.sv(32) @ 8332875000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [START]: Sending data = 0x27
+UVM_INFO ./tb/uart_monitor.sv(48) @ 9322415000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_exp: Captured expected RX data = 0x27
+UVM_INFO ./tb/uart_scoreboard.sv(52) @ 9328865000: uvm_test_top.env.sb [SB_RX] PASS! exp: 0x27, act: 0x27
+UVM_INFO ./tb/uart_monitor.sv(61) @ 9328865000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_act: Captured actual RX data = 0x27
+UVM_INFO ./tb/uart_driver.sv(47) @ 9374485000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [END]: Finished sending data = 0x27
+UVM_INFO ./tb/uart_sequence.sv(27) @ 9374485000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_rx_test finish : payload = 0x27
+UVM_INFO ./tb/uart_driver.sv(32) @ 9374485000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [START]: Sending data = 0xd3
+UVM_INFO ./tb/uart_monitor.sv(48) @ 10364025000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_exp: Captured expected RX data = 0xd3
+UVM_INFO ./tb/uart_scoreboard.sv(52) @ 10370465000: uvm_test_top.env.sb [SB_RX] PASS! exp: 0xd3, act: 0xd3
+UVM_INFO ./tb/uart_monitor.sv(61) @ 10370465000: uvm_test_top.env.agt.mon [uart_monitor] monitor_rx_act: Captured actual RX data = 0xd3
+UVM_INFO ./tb/uart_driver.sv(47) @ 10416095000: uvm_test_top.env.agt.drv [uart_driver] drive_tx [END]: Finished sending data = 0xd3
+UVM_INFO ./tb/uart_sequence.sv(27) @ 10416095000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_rx_test finish : payload = 0xd3
+UVM_INFO ./tb/uart_sequence.sv(65) @ 10416095000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] RX test completed
+UVM_INFO ./tb/uart_sequence.sv(68) @ 10416095000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] Starting TX test with 10 iterations
+UVM_INFO ./tb/uart_driver.sv(54) @ 10416095000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [START]: Starting TX with data = 0x4a
+UVM_INFO ./tb/uart_monitor.sv(74) @ 10416115000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_exp: Captured expected TX data = 0x4a
+UVM_INFO ./tb/uart_scoreboard.sv(74) @ 11405655000: uvm_test_top.env.sb [SB_TX] PASS! exp: 0x4a, act: 0x4a
+UVM_INFO ./tb/uart_monitor.sv(92) @ 11405655000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_act: Captured actual TX data = 0x4a
+UVM_INFO ./tb/uart_driver.sv(64) @ 11457715000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [END]: Finished TX with data = 0x4a
+UVM_INFO ./tb/uart_sequence.sv(43) @ 11457715000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_tx_test finish : tx_data = 0x4a
+UVM_INFO ./tb/uart_driver.sv(54) @ 11457715000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [START]: Starting TX with data = 0x6a
+UVM_INFO ./tb/uart_monitor.sv(74) @ 11457735000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_exp: Captured expected TX data = 0x6a
+UVM_INFO ./tb/uart_scoreboard.sv(74) @ 12447275000: uvm_test_top.env.sb [SB_TX] PASS! exp: 0x6a, act: 0x6a
+UVM_INFO ./tb/uart_monitor.sv(92) @ 12447275000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_act: Captured actual TX data = 0x6a
+UVM_INFO ./tb/uart_driver.sv(64) @ 12499335000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [END]: Finished TX with data = 0x6a
+UVM_INFO ./tb/uart_sequence.sv(43) @ 12499335000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_tx_test finish : tx_data = 0x6a
+UVM_INFO ./tb/uart_driver.sv(54) @ 12499335000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [START]: Starting TX with data = 0xb6
+UVM_INFO ./tb/uart_monitor.sv(74) @ 12499355000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_exp: Captured expected TX data = 0xb6
+UVM_INFO ./tb/uart_scoreboard.sv(74) @ 13488895000: uvm_test_top.env.sb [SB_TX] PASS! exp: 0xb6, act: 0xb6
+UVM_INFO ./tb/uart_monitor.sv(92) @ 13488895000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_act: Captured actual TX data = 0xb6
+UVM_INFO ./tb/uart_driver.sv(64) @ 13540955000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [END]: Finished TX with data = 0xb6
+UVM_INFO ./tb/uart_sequence.sv(43) @ 13540955000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_tx_test finish : tx_data = 0xb6
+UVM_INFO ./tb/uart_driver.sv(54) @ 13540955000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [START]: Starting TX with data = 0x67
+UVM_INFO ./tb/uart_monitor.sv(74) @ 13540975000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_exp: Captured expected TX data = 0x67
+UVM_INFO ./tb/uart_scoreboard.sv(74) @ 14530515000: uvm_test_top.env.sb [SB_TX] PASS! exp: 0x67, act: 0x67
+UVM_INFO ./tb/uart_monitor.sv(92) @ 14530515000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_act: Captured actual TX data = 0x67
+UVM_INFO ./tb/uart_driver.sv(64) @ 14582575000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [END]: Finished TX with data = 0x67
+UVM_INFO ./tb/uart_sequence.sv(43) @ 14582575000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_tx_test finish : tx_data = 0x67
+UVM_INFO ./tb/uart_driver.sv(54) @ 14582575000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [START]: Starting TX with data = 0x1e
+UVM_INFO ./tb/uart_monitor.sv(74) @ 14582595000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_exp: Captured expected TX data = 0x1e
+UVM_INFO ./tb/uart_scoreboard.sv(74) @ 15572135000: uvm_test_top.env.sb [SB_TX] PASS! exp: 0x1e, act: 0x1e
+UVM_INFO ./tb/uart_monitor.sv(92) @ 15572135000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_act: Captured actual TX data = 0x1e
+UVM_INFO ./tb/uart_driver.sv(64) @ 15624195000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [END]: Finished TX with data = 0x1e
+UVM_INFO ./tb/uart_sequence.sv(43) @ 15624195000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_tx_test finish : tx_data = 0x1e
+UVM_INFO ./tb/uart_driver.sv(54) @ 15624195000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [START]: Starting TX with data = 0x2e
+UVM_INFO ./tb/uart_monitor.sv(74) @ 15624215000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_exp: Captured expected TX data = 0x2e
+UVM_INFO ./tb/uart_scoreboard.sv(74) @ 16613755000: uvm_test_top.env.sb [SB_TX] PASS! exp: 0x2e, act: 0x2e
+UVM_INFO ./tb/uart_monitor.sv(92) @ 16613755000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_act: Captured actual TX data = 0x2e
+UVM_INFO ./tb/uart_driver.sv(64) @ 16665815000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [END]: Finished TX with data = 0x2e
+UVM_INFO ./tb/uart_sequence.sv(43) @ 16665815000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_tx_test finish : tx_data = 0x2e
+UVM_INFO ./tb/uart_driver.sv(54) @ 16665815000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [START]: Starting TX with data = 0x14
+UVM_INFO ./tb/uart_monitor.sv(74) @ 16665835000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_exp: Captured expected TX data = 0x14
+UVM_INFO ./tb/uart_scoreboard.sv(74) @ 17655375000: uvm_test_top.env.sb [SB_TX] PASS! exp: 0x14, act: 0x14
+UVM_INFO ./tb/uart_monitor.sv(92) @ 17655375000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_act: Captured actual TX data = 0x14
+UVM_INFO ./tb/uart_driver.sv(64) @ 17707435000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [END]: Finished TX with data = 0x14
+UVM_INFO ./tb/uart_sequence.sv(43) @ 17707435000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_tx_test finish : tx_data = 0x14
+UVM_INFO ./tb/uart_driver.sv(54) @ 17707435000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [START]: Starting TX with data = 0xe2
+UVM_INFO ./tb/uart_monitor.sv(74) @ 17707455000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_exp: Captured expected TX data = 0xe2
+UVM_INFO ./tb/uart_scoreboard.sv(74) @ 18696995000: uvm_test_top.env.sb [SB_TX] PASS! exp: 0xe2, act: 0xe2
+UVM_INFO ./tb/uart_monitor.sv(92) @ 18696995000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_act: Captured actual TX data = 0xe2
+UVM_INFO ./tb/uart_driver.sv(64) @ 18749055000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [END]: Finished TX with data = 0xe2
+UVM_INFO ./tb/uart_sequence.sv(43) @ 18749055000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_tx_test finish : tx_data = 0xe2
+UVM_INFO ./tb/uart_driver.sv(54) @ 18749055000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [START]: Starting TX with data = 0xe3
+UVM_INFO ./tb/uart_monitor.sv(74) @ 18749075000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_exp: Captured expected TX data = 0xe3
+UVM_INFO ./tb/uart_scoreboard.sv(74) @ 19738615000: uvm_test_top.env.sb [SB_TX] PASS! exp: 0xe3, act: 0xe3
+UVM_INFO ./tb/uart_monitor.sv(92) @ 19738615000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_act: Captured actual TX data = 0xe3
+UVM_INFO ./tb/uart_driver.sv(64) @ 19790675000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [END]: Finished TX with data = 0xe3
+UVM_INFO ./tb/uart_sequence.sv(43) @ 19790675000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_tx_test finish : tx_data = 0xe3
+UVM_INFO ./tb/uart_driver.sv(54) @ 19790675000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [START]: Starting TX with data = 0x8c
+UVM_INFO ./tb/uart_monitor.sv(74) @ 19790695000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_exp: Captured expected TX data = 0x8c
+UVM_INFO ./tb/uart_scoreboard.sv(74) @ 20780235000: uvm_test_top.env.sb [SB_TX] PASS! exp: 0x8c, act: 0x8c
+UVM_INFO ./tb/uart_monitor.sv(92) @ 20780235000: uvm_test_top.env.agt.mon [uart_monitor] monitor_tx_act: Captured actual TX data = 0x8c
+UVM_INFO ./tb/uart_driver.sv(64) @ 20832295000: uvm_test_top.env.agt.drv [uart_driver] drive_rx [END]: Finished TX with data = 0x8c
+UVM_INFO ./tb/uart_sequence.sv(43) @ 20832295000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] do_tx_test finish : tx_data = 0x8c
+UVM_INFO ./tb/uart_sequence.sv(72) @ 20832295000: uvm_test_top.env.agt.sqr@@seq [uart_rx_tx_sequence] TX test completed
+UVM_INFO /tools/synopsys/vcs/W-2024.09-SP1/etc/uvm-1.2/base/uvm_objection.svh(1276) @ 20832295000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO ./tb/uart_scoreboard.sv(85) @ 20832295000: uvm_test_top.env.sb [SB_REPORT] === UART verification (0 Errors) ===
+UVM_INFO /tools/synopsys/vcs/W-2024.09-SP1/etc/uvm-1.2/base/uvm_report_catcher.svh(705) @ 20832295000: reporter [UVM/REPORT/CATCHER] 
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+
+UVM_INFO /tools/synopsys/vcs/W-2024.09-SP1/etc/uvm-1.2/base/uvm_report_server.svh(904) @ 20832295000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :  133
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[RNTST]     1
+[SB_REPORT]     1
+[SB_RX]    10
+[SB_TX]    10
+[TEST_DONE]     1
+[UVM/RELNOTES]     1
+[UVM/REPORT/CATCHER]     1
+[UVMTOP]     1
+[tb_uart]     1
+[uart_base_test]     1
+[uart_driver]    41
+[uart_monitor]    40
+[uart_rx_tx_sequence]    24
+
+$finish called from file "/tools/synopsys/vcs/W-2024.09-SP1/etc/uvm-1.2/base/uvm_root.svh", line 527.
+$finish at simulation time          20832295000
+
+---------------------------------------------------------------------------
+VCS Coverage Metrics: during simulation line, cond, FSM, branch, tgl was monitored
+---------------------------------------------------------------------------
+
+ Coverage status: End of All Coverages ...
+
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 20832295000 ps
+CPU Time:      1.570 seconds;       Data structure size:   0.6Mb
+Sat Jun  6 18:25:36 2026

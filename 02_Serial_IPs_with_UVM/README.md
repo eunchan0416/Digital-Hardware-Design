@@ -1,4 +1,4 @@
-# 🛠️ Serial IPs with Advanced UVM Verification Suite
+#  Serial IPs with Advanced UVM Verification Suite
 
 This repository features a collection of robust, synthesizable serial communication protocol IPs (UART, SPI, I2C) designed at the Register Transfer Level (RTL) and thoroughly verified using an enterprise-grade **Universal Verification Methodology (UVM) 1.2** framework.
 
@@ -6,7 +6,7 @@ The primary objective of this project is to demonstrate commercial-grade hardwar
 
 ---
 
-## 📦 1. Supported IP Cores & Technical Specifications
+##  1. Supported IP Cores & Technical Specifications
 
 Detailed hardware architectures, FSM charts, and waveform proofs for each IP are isolated in their respective specification documents to maintain high documentation scalability. Click on the IP name or the spec link to view its detailed datasheet.
 
@@ -18,7 +18,7 @@ Detailed hardware architectures, FSM charts, and waveform proofs for each IP are
 
 ---
 
-## 🏗️ 2. Common UVM Testbench Architecture
+##  2. Common UVM Testbench Architecture
 
 All digital communication IPs within this repository share a highly unified, reusable, top-down UVM architecture. The testbench subsystem leverages constraint-random stimulus generation, TLM analysis ports, and asynchronous FIFO-based scoreboards to guarantee absolute data integrity under multi-iteration stress conditions.
 
@@ -27,7 +27,7 @@ All digital communication IPs within this repository share a highly unified, reu
 
 ---
 
-## 📂 3. Repository Directory Structure
+##  3. Repository Directory Structure
 
 ```text
 02_Serial_IPs_with_UVM/

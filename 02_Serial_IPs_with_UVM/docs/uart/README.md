@@ -47,7 +47,7 @@ For complete hardware decoupling, the design implements fully independent Moore-
 ### 3.1. UART Transmitter (TX) FSM
 Upon receiving the `tx_start` signal, the FSM sequentially drives the start bit, shifts out 8 data bits from the internal buffer, appends the high stop bit, and cleanly drives the line back to the Idle state (`tx=1`).
 
-![UART TX FSM](./uart_tx_fsm.jpg)
+![UART TX FSM](./uart_tx_fsm.png)
 
 ### 3.2. UART Receiver (RX) FSM
 The receiver continuously polls for a valid Start bit falling edge. Once detected, it utilizes the 16x oversampling counter (`b_tick_cnt`) to wait for 7 ticks, placing the sampling point precisely at the theoretical center of the symbol window.

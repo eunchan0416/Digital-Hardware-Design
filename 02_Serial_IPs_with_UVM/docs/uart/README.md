@@ -40,7 +40,7 @@ For complete hardware decoupling and timing optimization, the design implements 
 ### 3.1. UART Transmitter (TX) FSM
 The transmitter controller handles the serialization of parallel host data. Upon receiving the `tx_start` signal, it sequentially drives the start bit, shifts out 8 data bits from the internal buffer register, appends the high stop bit, and cleanly drives the line back to the Idle state (`tx=1`).
 
-![UART TX FSM](./uart_tx_fsm.jpg)
+![UART TX FSM](./uart_tx_fsm.png)
 
 ### 3.2. UART Receiver (RX) FSM
 The receiver core samples the incoming asynchronous line. It continuously polls for a valid Start bit falling edge. Once detected, it utilizes a 16x oversampling counter (`b_tick_cnt`) to wait for 7 ticks (`b_tick_cnt==7`), placing the sampling point precisely at the theoretical center of the symbol window. Subsequent payload bits are sampled exactly every 16 ticks to maintain mid-bit alignment.

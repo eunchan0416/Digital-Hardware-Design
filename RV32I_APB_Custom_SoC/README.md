@@ -27,8 +27,6 @@ This repository provides the RTL design and HW/SW co-simulation environment for 
 * **Peripherals:** UART (Configurable baud rate), GPIO, 7-Segment Controller, BRAM.
 
 
-
-```mermaid
 graph LR
     subgraph CPU["RV32I Core"]
         PC[Program Counter]
@@ -57,6 +55,7 @@ graph LR
     Bridge -- APB Protocol --> GPIO
     Bridge -- APB Protocol --> FND
     Bridge -- APB Protocol --> UART
+
 
 
 

@@ -1,4 +1,3 @@
-그러면 깃허브 readme에 바로 적용가능한 코드를 기반으로 수정한 전체 readme내용으 알려줘.
 # RV32I Multi-cycle Core with AMBA 3 APB Bus SoC
 
 ## 1. Overview

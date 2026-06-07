@@ -26,35 +26,9 @@ This repository provides the RTL design and HW/SW co-simulation environment for 
 
 * **Peripherals:** UART (Configurable baud rate), GPIO, 7-Segment Controller, BRAM.
 
-graph LR
-    subgraph CPU["RV32I Core"]
-        PC[Program Counter]
-        ALU[ALU]
-    end
 
-    subgraph Interconnect["APB Bus Interconnect"]
-        Master[APB Master]
-        Bridge[APB Bridge]
-        Master --> Bridge
-    end
 
-    subgraph Peripherals["Peripheral Blocks"]
-        BRAM[BRAM 8KB]
-        GPO[GPO]
-        GPI[GPI]
-        GPIO[GPIO]
-        FND[FND Controller]
-        UART[UART Controller]
-    end
-
-    CPU -- Address/Data --> Interconnect
-    Bridge -- APB Protocol --> BRAM
-    Bridge -- APB Protocol --> GPO
-    Bridge -- APB Protocol --> GPI
-    Bridge -- APB Protocol --> GPIO
-    Bridge -- APB Protocol --> FND
-    Bridge -- APB Protocol --> UART
-
+![System Block Diagram](./docs/soc_block_diagram.png)
 
 
 
@@ -103,3 +77,4 @@ The APB master address decoder allocates 4KB address spaces for each memory-mapp
 | FF       | 486         | 41,600    | 1.17 %        |
 
 | IO       | 48          | 106       | 45.28 %       |
+

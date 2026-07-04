@@ -161,7 +161,7 @@ module APB_MUx (
 );
     always_comb begin
         rdata = 32'd0;
-        ready = 32'd0;
+        ready = 32'd1;
 
         case (sel[31:28])
             4'h1: begin

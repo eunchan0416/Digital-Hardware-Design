@@ -1,42 +1,65 @@
-#  Serial IPs with Advanced UVM Verification Suite
+# Serial IP Verification: UART with UVM
 
-This repository features a collection of robust, synthesizable serial communication protocol IPs (UART, SPI, I2C) designed at the Register Transfer Level (RTL) and thoroughly verified using an enterprise-grade **Universal Verification Methodology (UVM) 1.2** framework.
+**Focus:** RTL-to-testbench verification structure for a standalone UART IP.
 
-The primary objective of this project is to demonstrate commercial-grade hardware design predictability and a rigorous top-down verification architecture utilizing asynchronous dynamic transaction tracking.
+The reviewed, evidence-backed artifact in this directory is the UART: a synthesizable 8-N-1 RTL implementation with a UVM 1.2 environment. SPI source is present as work in progress; I2C is not presented as implemented.
 
----
+> **Status:** UART RTL and UVM environment are versioned. A retained VCS log records one UVM execution with 10 randomized RX and 10 randomized TX transactions and zero reported UVM errors. Functional coverage closure, assertions, and a memory-mapped APB/AXI4-Lite wrapper are not yet included.
 
-##  1. Supported IP Cores & Technical Specifications
+## Review in five minutes
 
-Detailed hardware architectures, FSM charts, and waveform proofs for each IP are isolated in their respective specification documents to maintain high documentation scalability. Click on the IP name or the spec link to view its detailed datasheet.
+| Question | Entry point |
+| --- | --- |
+| What is the UART interface and framing? | [`docs/uart/README.md`](docs/uart/README.md) |
+| What is the DUT RTL? | [`rtl/uart/`](rtl/uart/) |
+| What is the UVM component structure? | [`verif/uart_env/`](verif/uart_env/) |
+| What result is retained? | [`sim/uart/sim_result.log`](sim/uart/sim_result.log) |
 
-| IP Core | Status | Key Features | Verification Framework | Detailed Specification |
-| :--- | :---: | :--- | :---: | :---: |
-| **UART** | 🟢 Verified | 8-N-1 Frame, 16x Oversampling RX, Independent FSMs | UVM 1.2 (0 Errors) | [Read UART Spec](./docs/uart/README.md) |
-| **SPI** | ⏳ WIP | Master/Slave, Configurable CPOL/CPHA, Programmable Clock | Planned | Coming Soon |
-| **I2C** | ⏳ WIP | Multi-Master/Slave, 7-bit Addressing, Standard/Fast Mode | Planned | Coming Soon |
+## UART scope
 
----
+| Item | Implemented scope |
+| --- | --- |
+| Frame | 8 data bits, no parity, one stop bit (8-N-1) |
+| RX | 16× oversampling receiver |
+| TX / RX control | Separate FSMs |
+| Verification | UVM sequence, driver, monitor, agent, environment, scoreboard, and test |
+| Bus integration | Not implemented — APB / AXI4-Lite wrapper is future work |
 
-##  2. Common UVM Testbench Architecture
-
-All digital communication IPs within this repository share a highly unified, reusable, top-down UVM architecture. The testbench subsystem leverages constraint-random stimulus generation, TLM analysis ports, and asynchronous FIFO-based scoreboards to guarantee absolute data integrity under multi-iteration stress conditions.
-
-![UVM Base Architecture](./docs/images/uvm_base_architecture.jpg)
-*(Note: Component classes such as Sequencer Items, Drivers, Monitors, and Scoreboard Predictors are polymorphically overridden to match each specific serial protocol.)*
-
----
-
-##  3. Repository Directory Structure
+## Verification architecture
 
 ```text
-02_Serial_IPs_with_UVM/
-├── rtl/                        # Design Under Test (DUT) Sources
-│   └── uart/                   # UART RTL hardware blocks
-├── verif/                      # UVM Verification IP (VIP) Suite
-│   └── uart_env/               # Integrated UVM component classes
-├── sim/                        # Simulation & Build Automation Infrastructure
-│   └── uart/                   # Build scripts, filelists, and trace logs
-└── docs/                       # Technical Specifications & Documentation Assets
-    ├── images/                 # Common system and testbench architecture maps
-    └── uart/                   # UART specific visual diagrams and specifications
+uart_base_test
+└── uart_env
+    ├── uart_agent
+    │   ├── sequencer
+    │   ├── driver
+    │   └── monitor
+    └── uart_scoreboard
+```
+
+The monitor publishes expected and observed UART traffic to the scoreboard, which compares the transactions. The retained VCS/UVM 1.2 log records ten RX and ten TX randomized transactions, each reported as a scoreboard pass; the final report contains `UVM_ERROR: 0` and `UVM_FATAL: 0`. This is a single saved run, not a coverage-closure statement.
+
+![UVM architecture](docs/images/uvm_base_architecture.jpg)
+
+## Directory map
+
+```text
+rtl/uart/        # baud tick, TX, RX, top
+verif/uart_env/  # UVM testbench components
+sim/uart/        # Makefile and retained VCS result log
+docs/uart/       # UART interface/FSM/waveform documentation
+rtl/spi/         # Work-in-progress source; no verification claim
+```
+
+## Reproduction boundary
+
+`sim/uart/Makefile` and the saved VCS output document the existing flow. A fresh run requires a SystemVerilog simulator and UVM 1.2 installation. The repository does not currently include coverage databases, a CI runner, or an open-source simulator-compatible script; do not infer those results.
+
+## Next engineering steps
+
+1. Correct and complete the UART simulation README/file list, then add a one-command regression entry point.
+2. Add SVA for framing, baud-tick, reset, and RX sampling invariants.
+3. Add covergroups and publish a dated coverage summary.
+4. Wrap the UART with one selected MMIO protocol (APB or AXI4-Lite), document the register map, and verify register transactions separately from serial behavior.
+
+See the repository-wide [evidence register](../docs/PORTFOLIO_EVIDENCE.md) for wording suitable for applications and interviews.

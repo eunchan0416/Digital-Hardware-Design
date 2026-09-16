@@ -1,12 +1,12 @@
-# 📡 UART IP Core Technical Specification & Verification Report
+# UART IP Core: Interface and Verification Notes
 
-This document provides the exhaustive hardware architectural specifications, interface definitions, finite state machine (FSM) controls, and physical waveform proofs for the custom-designed standalone UART IP Core.
+This document describes the standalone UART RTL interface, finite-state machines, and retained simulation artifacts. It does not represent a physical-board capture or coverage closure.
 
 ---
 
 ## 1. Technical Specifications & Framing Format
 
-The Custom UART core utilizes an asynchronous serial data transmission protocol. It incorporates an industrial-grade oversampling receiver to achieve high noise immunity and timing margin robustness against potential baud rate drift.
+The UART uses an asynchronous serial protocol and a 16× oversampling receiver. The RTL and retained UVM simulation log are the evidence for the implemented scope; no quantified noise-margin claim is made here.
 
 * **Target Operating Frequency:** 100 MHz (Configurable via parameters)
 * **Data Width:** 8-bit Serial-to-Parallel and Parallel-to-Serial conversion.
@@ -61,9 +61,9 @@ The receiver continuously polls for a valid Start bit falling edge. Once detecte
 
 ---
 
-## 4. UVM Verification Strategy & Results
+## 4. UVM Verification Strategy & Retained Result
 
-The verification environment ensures absolute data integrity using a Constraint-Random Verification (CRV) methodology. 
+The UVM environment uses constraint-random payload and delay generation, expected/actual transaction monitoring, and a scoreboard comparison. It provides evidence for the scenarios exercised by the saved run; it is not an exhaustive proof.
 
 ### 4.1. UVM Transaction (Sequence Item)
 The core of the verification stimulus is the `uart_sequence_item`, which dynamically generates constraint-random payloads.
@@ -73,10 +73,10 @@ The core of the verification stimulus is the `uart_sequence_item`, which dynamic
 ### 4.2. Test Scenarios & Scoreboard Predictor
 * **Randomized Payload Generation:** The UVM Sequencer generates constraint-random payloads, passing them to the Driver.
 * **Transaction Matching:** The `uart_scoreboard` employs asynchronous FIFOs to capture expected transactions directly from the monitor and compares them against actual transactions captured by the physical line monitors.
-* **Test Iterations:** The base test successfully executed **10 consecutive random RX operations** followed by **10 consecutive random TX operations** without any data loss, misalignment, or FIFO overflow.
+* **Recorded run:** [`../../sim/uart/sim_result.log`](../../sim/uart/sim_result.log) records **10 random RX operations** followed by **10 random TX operations**. The final UVM report contains zero reported errors and fatals for that run.
 
-### 4.3. Hardware Timing Verification (Waveform Proof)
-The trace log below visualizes the transmission and reception of an 8-bit payload (`8'h72`, ASCII 'r'). It explicitly demonstrates the exact bit-shifting intervals, internal register updates matching the LSB-first rule, and the successful execution of the receive cycle.
+### 4.3. Simulation waveform example
+The waveform below is a simulation artifact for an 8-bit payload (`8'h72`, ASCII `r`). It illustrates the intended LSB-first transmit/receive behavior; it is not a hardware timing or board-validation result.
 
 ![UART RX Waveform](./uart_rx_waveform.png)
 

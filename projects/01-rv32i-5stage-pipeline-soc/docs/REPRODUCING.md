@@ -5,9 +5,9 @@
 Requirements: Python 3 and a SystemVerilog-capable simulator. The included Makefile defaults to Icarus Verilog.
 
 ```bash
-make -C sim firmware
-make -C sim csr_interrupt
-make -C sim apb_mmio
+make -f sim/Makefile firmware
+make -f sim/Makefile csr_interrupt
+make -f sim/Makefile apb_mmio
 ```
 
 The CSR/interrupt test checks trap entry, `mtvec`, handler execution, `mret`, and resumed main-loop execution. The APB/MMIO test checks RAM access plus GPIO, FND, and UART register transactions.
